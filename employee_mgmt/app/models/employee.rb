@@ -14,6 +14,7 @@ class Employee < ActiveRecord::Base
    self.last_name=self.last_name.capitalize
 
  end
+ 
 
 
  def update_phoneno val
@@ -21,25 +22,25 @@ class Employee < ActiveRecord::Base
     self.save
   end
 
-  def display_all_employee
+  def self.display_all_employee
     Employee.order(first_name: :asc)
   end
 
 
-  def display_average_salary
+  def self.display_average_salary
     Employee.average(:salary)
   end
-  def display_maximum_salary
+  def self.display_maximum_salary
     Employee.maximum(:salary)
   end
 
-  def display_minimum_salary
+  def self.display_minimum_salary
     Employee.minimum(:salary)
   end
   def get_full_name
     "#{self.first_name} #{self.middle_name} #{last_name}"
   end
-  def delete_all_records
+  def self.delete_all_records
     Employee.delete_all
   end
 end
