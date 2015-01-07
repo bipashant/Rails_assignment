@@ -14,7 +14,21 @@ class Employee < ActiveRecord::Base
    self.last_name=self.last_name.capitalize
 
  end
- 
+
+before_destroy :ask_user_for_delete_confirmation
+
+
+
+
+ def ask_user_for_delete_confirmation
+   puts "Are you sure to delete data?(Y/N)"
+   input = gets.chomp()
+   if !(input == 'y')
+     puts "Record not deleted"
+     return false
+
+   end
+ end
 
 
  def update_phoneno val
